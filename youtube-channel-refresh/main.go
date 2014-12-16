@@ -17,14 +17,10 @@ func main() {
 		return
 	}
 
-	fmt.Printf (". . Calling buildOAuthHTTPClient\n")
-
 	client, err := buildOAuthHTTPClient (config)
 	if err != nil {
 		log.Fatalf("Error building OAuth client: %v", err)
 	}
-
-	fmt.Printf (". . Calling youtube.New.\n")
 
 	service, err := youtube.New(client)
 	if err != nil {
@@ -43,7 +39,7 @@ func main() {
 	for _, channel := range response.Items {
 		playlistId := channel.ContentDetails.RelatedPlaylists.Uploads
 		// Print the playlist ID for the list of uploaded videos.
-		fmt.Printf("Videos in list %s\r\n", playlistId)
+		fmt.Printf("Videos in list: %s\r\n", playlistId)
 		nextPageToken := ""
 		for {
 			// Call the playlistItems.list method to retrieve the
